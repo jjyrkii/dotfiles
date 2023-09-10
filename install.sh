@@ -3,11 +3,12 @@ cd /home/tim/
 
 home=(
   ".gitconfig"
+  ".zshrc"
 )
 
 for i in ${home[@]}
 do
-  ln -s /home/tim/dotfiles/home/${i} /home/tim/
+  ln -s /home/tim/.dotfiles/home/${i} /home/tim/
 done
 
 config=(
@@ -15,5 +16,5 @@ config=(
   )
 for i in ${config[@]}
 do
-  ln -s /home/tim/dotfiles/config/${i} /home/tim/.config/
+  ln -s /home/tim/.dotfiles/config/${i} /home/tim/.config/
 done
