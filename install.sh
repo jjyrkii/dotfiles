@@ -10,4 +10,10 @@ do
   ln -s /home/tim/dotfiles/home/${i} /home/tim/
 done
 
-ln -s /home/tim/dotfiles/nvim /home/tim/.config/nvim/lua/user
+config=(
+  "nvim"
+  )
+for i in ${config[@]}
+do
+  ln -s /home/tim/dotfiles/config/${i} /home/tim/.config/
+done
