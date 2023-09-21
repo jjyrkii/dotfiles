@@ -1,4 +1,4 @@
-export ZSH=/usr/share/oh-my-zsh/
+export ZSH=/home/tim/.oh-my-zsh/
 
 ZSH_THEME="robbyrussell" # set by `omz`
 plugins=(git)
@@ -194,10 +194,7 @@ ex ()
   fi
 }
 
-#wayland aliases
-alias wsimplescreen="wf-recorder -a"
-alias wsimplescreenrecorder="wf-recorder -a -c h264_vaapi -C aac -d /dev/dri/renderD128 --file=recording.mp4"
-
 alias vim="nvim"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/tim/go/bin
+export PATH=$PATH:/home/tim/.oh-my-zsh

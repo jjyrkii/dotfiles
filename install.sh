@@ -6,11 +6,11 @@ packages=("zsh" "build-essential" "cmake" "ninja-build" "gettext" "unzip" "zsh" 
 
 for i in "${packages[@]}"; do
 	if ! [ -x "$(command -v $i)" ]; then
-    		echo "--- installing $i ---"
+		echo "--- installing $i ---"
 		sudo apt -y install $i
-  	else
-    		echo "--- $i already installed --- "
-  	fi
+	else
+		echo "--- $i already installed --- "
+	fi
 done
 
 echo "--- installing rust ---"
@@ -42,9 +42,17 @@ else
 fi
 
 echo "--- installing astronvim dependencies ---"
-cargo install tree-sitter-cli ripgrep bottom --locked 
-go install github.com/jesseduffield/lazygit@latest 
+cargo install tree-sitter-cli ripgrep bottom --locked
+go install github.com/jesseduffield/lazygit@latest
 go install github.com/dundee/gdu/v5/cmd/gdu@latest
+
+echo "--- installing github-cli ---"
+type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+	sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+	sudo apt update &&
+	sudo apt install gh -y
 
 echo "--- creating config ---"
 home=(
@@ -69,5 +77,5 @@ for i in "${config[@]}"; do
 	rm -rf /home/tim/.config/"${i}"
 	ln -s /home/tim/.dotfiles/config/"${i}" /home/tim/.config/
 done
-"--- config created ---"
-"--- SETUP DONE ---"
+echo "--- config created ---"
+echo "--- SETUP DONE ---"
