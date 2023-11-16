@@ -49,6 +49,13 @@ cargo install tree-sitter-cli ripgrep bottom --locked
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/dundee/gdu/v5/cmd/gdu@latest
 
+echo "--- installing astrovim ---"
+rm -rf "$HOME/.config/nvim"
+rm -rf "$HOME/.local/share/nvim"
+rm -rf "$HOME/.local/state/nvim"
+rm -rf "$HOME/.cache/nvim"
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+
 echo "--- creating config ---"
 etc=(
 	"pacman.conf"
@@ -61,21 +68,12 @@ done
 home=(
 	".gitconfig"
 	".zshrc"
+	".config/nvim/lua/user"
 )
 for i in "${home[@]}"; do
 	rm -rf "$HOME/${i:?}"
-	ln -s "$DIR/home/${i:?}" "$HOME"
+	ln -s "$DIR/home/${i:?}" "$HOME/${i:?}"
 done
 
-config=(
-	"nvim"
-)
-if ! [ -d "/home/tim/.config" ]; then
-	mkdir /home/tim/.config
-fi
-for i in "${config[@]}"; do
-	rm -rf /home/tim/.config/"${i:?}"
-	ln -s "${DIR}/config/${i:?}" /home/tim/.config/
-done
 echo "--- config created ---"
 echo "--- SETUP DONE ---"
