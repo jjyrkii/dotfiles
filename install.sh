@@ -15,7 +15,7 @@ packages=(
 	"zsh"
 	"nodejs"
 	"neovim"
-	"github-cli"
+	"gh"
 	"go"
 	"google-chrome-unstable"
 )
@@ -45,7 +45,6 @@ if ! [ -d "$HOME/.oh-my-zsh" ]; then
 else
 	echo "--- oh-my-zsh already installed --- "
 fi
-
 
 echo "--- installing astronvim dependencies ---"
 cargo install tree-sitter-cli ripgrep bottom --locked
