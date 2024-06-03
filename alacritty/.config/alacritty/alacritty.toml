@@ -1,0 +1,11 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+
+[env]
+TERM = "alacritty"
+
+[window]
