@@ -1,2 +1,5 @@
 theme = tokyonight
 cursor-style = block
+font-feature = -dlig
+font-feature = -calt
+font-feature = -liga
